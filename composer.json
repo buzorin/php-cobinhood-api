@@ -1,0 +1,29 @@
+{
+	"name": "buzorin/php-cobinhood-api",
+	"type": "library",
+	"description": "A simple to use API-client in PHP for Cobinhood The World's First ZERO Trading Fees Cryptocurrency Exchange.",
+	"keywords": ["cobinhood", "api"],
+	"homepage": "https://github.com/buzorin/php-cobinhood-api",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Konstantin Buzorin"
+		}
+	],
+	"support": {
+		"source": "https://github.com/buzorin/php-cobinhood-api",
+		"issues": "https://github.com/buzorin/php-cobinhood-api/issues",
+		"docs": "https://github.com/buzorin/php-cobinhood-api"
+	},
+	"require": {
+		"php": ">=5.4"
+	},
+	"config": {
+		"optimize-autoloader": true
+    },
+    "autoload": {
+		"classmap": [
+			"php-cobinhood-api.php"
+		]
+	}
+}
