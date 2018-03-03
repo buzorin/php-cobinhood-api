@@ -11,6 +11,9 @@ PHP Cobinhood API is a simple to use API-client in PHP for [Cobinhood](https://c
 * [Getting started using Composer](#getting-started-using-composer)
   + [Installation](#installation)
   + [Main setup](#main-setup)
+* [Getting started without Composer](#getting-started-without-composer)
+  + [Installation](#installation-1)
+  + [Main setup](#main-setup-1)
 * [Public API](#public-api)
   + [Get latest price of a symbol](#get-latest-price-of-a-symbol)
   + [Get depth of a symbol](#get-depth-of-a-symbol)
@@ -1383,3 +1386,7 @@ Array
 )
 ```
 </details>
+
+## Todos
+ - Websockets
+ - Examples
