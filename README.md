@@ -82,8 +82,8 @@ $cobinhood = new Cobinhood\API_client("<api key>");
 ```php
 $last_price = $cobinhood->get_last_price("COB-BTC");
 if (!$last_price["error"]) {
-	echo $last_price;
-	// 0.00001601
+    echo $last_price;
+    // 0.00001601
 }
 ```
 
@@ -93,7 +93,7 @@ $limit = 5; // Optional. Defaults to 50 if not specified, if limit is 0, it mean
 
 $depth = $cobinhood->get_order_book("COB-BTC", $limit);
 if (!$depth["error"]) {
-	print_r($depth);
+    print_r($depth);
 }
 ```
 
@@ -191,7 +191,7 @@ Returns info for all currencies available for trade
 ```php
 $currencies = $cobinhood->get_currencies();
 if (!$currencies["error"]) {
-	print_r($currencies);
+    print_r($currencies);
 }
 ```
 
@@ -246,7 +246,7 @@ Array
 ```php
 $trading_pairs = $cobinhood->get_trading_pairs();
 if (!$trading_pairs["error"]) {
-	print_r($trading_pairs);
+    print_r($trading_pairs);
 }
 ```
 
@@ -298,7 +298,7 @@ Array
 ```php
 $stats = $cobinhood->get_stats();
 if (!$stats["error"]) {
-	print_r($stats);
+    print_r($stats);
 }
 ```
 
@@ -359,7 +359,7 @@ Array
 ```php
 $ticker = $cobinhood->get_ticker("COB-BTC");
 if (!$ticker["error"]) {
-	print_r($ticker);
+    print_r($ticker);
 }
 ```
 
@@ -388,7 +388,7 @@ $limit = 3; // Optional. Defaults to 20 if not specified, max 50.
 
 $trades = $cobinhood->get_trades("COB-BTC", $limit);
 if (!$trades["error"]) {
-	print_r($trades);
+    print_r($trades);
 }
 ```
 
@@ -437,7 +437,7 @@ $endTime   = 1519308723000; // Optional. Unix timestamp in milliseconds. Default
 
 $candles = $cobinhood->get_candles("COB-BTC", $timeframe, $endTime, $startTime);
 if (!$candles["error"]) {
-	print_r($candles);
+    print_r($candles);
 }
 ```
 
@@ -504,8 +504,8 @@ Returns server Unix timestamp in milliseconds
 ```php
 $server_time = $cobinhood->get_server_time();
 if (!$server_time["error"]) {
-	echo $server_time;
-	// 1520076475432
+    echo $server_time;
+    // 1520076475432
 }
 ```
 
@@ -513,7 +513,7 @@ if (!$server_time["error"]) {
 ```php
 $server_info = $cobinhood->get_server_info();
 if (!$server_info["error"]) {
-	print_r($server_info);
+    print_r($server_info);
 }
 ```
 
@@ -538,7 +538,7 @@ $quantity = 1000;
 
 $limit_buy_order = $cobinhood->limit_buy("COB-BTC", $price, $quantity);
 if (!$limit_buy_order["error"]) {
-	print_r($limit_buy_order);
+    print_r($limit_buy_order);
 }
 ```
 
@@ -569,7 +569,7 @@ $quantity = 1000;
 
 $limit_sell_order = $cobinhood->limit_sell("COB-BTC", $price, $quantity);
 if (!$limit_sell_order["error"]) {
-	print_r($limit_sell_order);
+    print_r($limit_sell_order);
 }
 ```
 
@@ -600,7 +600,7 @@ $quantity = 1000;
 
 $market_buy_order = $cobinhood->market_buy("COB-BTC", $quantity);
 if (!$market_buy_order["error"]) {
-	print_r($market_buy_order);
+    print_r($market_buy_order);
 }
 ```
 
@@ -630,7 +630,7 @@ $quantity = 1000;
 
 $market_sell_order = $cobinhood->market_sell("COB-BTC", $quantity);
 if (!$market_sell_order["error"]) {
-	print_r($market_sell_order);
+    print_r($market_sell_order);
 }
 ```
 
@@ -660,7 +660,7 @@ $order_id = "37f550a2-2aa6-20f4-a3fe-e120f420637c";
 
 $order_status = $cobinhood->get_order_status($order_id);
 if (!$order_status["error"]) {
-	print_r($order_status);
+    print_r($order_status);
 }
 ```
 
@@ -691,8 +691,8 @@ $order_id = "37f550a2-2aa6-20f4-a3fe-e120f420637c";
 
 $cancel_order = $cobinhood->cancel_order($order_id);
 if (!$cancel_order["error"] && $cancel_order) {
-	echo "Order cancelled";
-	// Order cancelled
+    echo "Order cancelled";
+    // Order cancelled
 }
 ```
 
@@ -704,8 +704,8 @@ $quantity = 1000;
 
 $modify_order = $cobinhood->modify_order($order_id);
 if (!$modify_order["error"] && $modify_order) {
-	echo "Order modified";
-	// Order modified
+    echo "Order modified";
+    // Order modified
 }
 ```
 
@@ -715,7 +715,7 @@ $limit = 2; // Optional. Defaults to 20 if not specified, max 50.
 
 $open_orders = $cobinhood->get_open_orders("COB-ETH", $limit);
 if (!$open_orders["error"]) {
-	print_r($open_orders);
+    print_r($open_orders);
 }
 ```
 
@@ -750,7 +750,7 @@ $limit = 2; // Optional. Defaults to 20 if not specified, max 50.
 
 $open_orders_all = $cobinhood->get_open_orders_all($limit);
 if (!$open_orders_all["error"]) {
-	print_r($open_orders_all);
+    print_r($open_orders_all);
 }
 ```
 
@@ -800,7 +800,7 @@ $order_id = "37f550a2-2aa6-20f4-a3fe-e120f420637c";
 
 $order_trades = $cobinhood->get_order_trades($order_id);
 if (!$order_trades["error"]) {
-	print_r($order_trades);
+    print_r($order_trades);
 }
 ```
 
@@ -838,7 +838,7 @@ $limit = 2; // Optional. Defaults to 50 if not specified.
 
 $orders_history = $cobinhood->get_orders_history("COB-BTC", $limit);
 if (!$orders_history["error"]) {
-	print_r($orders_history);
+    print_r($orders_history);
 }
 ```
 
@@ -888,7 +888,7 @@ $limit = 2; // Optional. Defaults to 50 if not specified.
 
 $orders_history_all = $cobinhood->get_orders_history_all($limit);
 if (!$orders_history_all["error"]) {
-	print_r($orders_history_all);
+    print_r($orders_history_all);
 }
 ```
 
@@ -938,7 +938,7 @@ Array
 ```php
 $balances = $cobinhood->get_balances();
 if (!$balances["error"]) {
-	print_r($balances);
+    print_r($balances);
 }
 ```
 
@@ -985,7 +985,7 @@ $limit = 3; // Defaults to 20 if not specified, max 50.
 
 $balance_history = $cobinhood->get_balance_history("ETH", $limit);
 if (!$balance_history["error"]) {
-	print_r($balance_history);
+    print_r($balance_history);
 }
 ```
 
@@ -1050,7 +1050,7 @@ $limit = 3; // Defaults to 20 if not specified, max 50.
 
 $balance_history_all = $cobinhood->get_balance_history_all($limit);
 if (!$balance_history_all["error"]) {
-	print_r($balance_history_all);
+    print_r($balance_history_all);
 }
 ```
 
@@ -1113,7 +1113,7 @@ Array
 ```php
 $deposit_addresses = $cobinhood->get_deposit_addresses("ETH");
 if (!$deposit_addresses["error"]) {
-	print_r($deposit_addresses);
+    print_r($deposit_addresses);
 }
 ```
 
@@ -1139,7 +1139,7 @@ Array
 ```php
 $deposit_addresses_all = $cobinhood->get_deposit_addresses_all();
 if (!$deposit_addresses_all["error"]) {
-	print_r($deposit_addresses_all);
+    print_r($deposit_addresses_all);
 }
 ```
 
@@ -1175,7 +1175,7 @@ $deposit_id = "09619448-985d-4485-835e-b69096194482";
 
 $deposit_status = $cobinhood->get_deposit_status($deposit_id);
 if (!$deposit_status["error"]) {
-	print_r($deposit_status);
+    print_r($deposit_status);
 }
 ```
 
@@ -1205,7 +1205,7 @@ Array
 ```php
 $deposits = $cobinhood->get_deposits();
 if (!$deposits["error"]) {
-	print_r($deposits);
+    print_r($deposits);
 }
 ```
 
@@ -1256,7 +1256,7 @@ Array
 ```php
 $withdrawal_addresses = $cobinhood->get_withdrawal_addresses("ETH");
 if (!$withdrawal_addresses["error"]) {
-	print_r($withdrawal_addresses);
+    print_r($withdrawal_addresses);
 }
 ```
 
@@ -1275,8 +1275,8 @@ Array
             [address] => 0xA6854dFD1BA0635f03a275ce9f3b310F52396673
             [created_at] => 1519723240162
         )
-	
-	[...]
+    
+    [...]
 )
 ```
 </details>
@@ -1285,7 +1285,7 @@ Array
 ```php
 $withdrawal_addresses_all = $cobinhood->get_withdrawal_addresses_all();
 if (!$withdrawal_addresses_all["error"]) {
-	print_r($withdrawal_addresses_all);
+    print_r($withdrawal_addresses_all);
 }
 ```
 
@@ -1314,8 +1314,8 @@ Array
             [address] => 0xA6854dFD1BA0635f03a275ce9f3b310F52g873hd
             [created_at] => 1519723240162
         )
-	
-	[...]
+    
+    [...]
 )
 ```
 </details>
@@ -1326,7 +1326,7 @@ $withdrawal_id = "09619448-985d-4485-835e-b69096194482";
 
 $withdrawal_status = $cobinhood->get_withdrawal_status($withdrawal_id);
 if (!$withdrawal_status["error"]) {
-	print_r($withdrawal_status);
+    print_r($withdrawal_status);
 }
 ```
 
@@ -1356,7 +1356,7 @@ Array
 ```php
 $withdrawals = $cobinhood->get_withdrawals();
 if (!$withdrawals["error"]) {
-	print_r($withdrawals);
+    print_r($withdrawals);
 }
 ```
 
