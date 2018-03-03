@@ -271,21 +271,21 @@ class API_client {
 	}
 	public function get_balance_history($currency, $limit = 20) {
 		$query = ["currency" => $currency, "limit" => $limit];
-		$data = $this->authRequest("/v1/wallet/ledger", $query);
+		$data = $this->authRequest("/v1/wallet/ledger", "GET", false, $query);
 		if ($data["error"])
 			return $data; // Handle error if method has ["error"] key in return
 		return $data["result"]["ledger"];
 	}
 	public function get_balance_history_all($limit = 20) {
 		$query = ["limit" => $limit];
-		$data = $this->authRequest("/v1/wallet/ledger", $query);
+		$data = $this->authRequest("/v1/wallet/ledger", "GET", false, $query);
 		if ($data["error"])
 			return $data; // Handle error if method has ["error"] key in return
 		return $data["result"]["ledger"];
 	}
 	public function get_deposit_addresses($currency) {
 		$query = ["currency" => $currency];
-		$data = $this->authRequest("/v1/wallet/deposit_addresses", $query);
+		$data = $this->authRequest("/v1/wallet/deposit_addresses", "GET", false, $query);
 		if ($data["error"])
 			return $data; // Handle error if method has ["error"] key in return
 		return $data["result"]["deposit_addresses"];
@@ -310,7 +310,7 @@ class API_client {
 	}
 	public function get_withdrawal_addresses($currency) {
 		$query = ["currency" => $currency];
-		$data = $this->authRequest("/v1/wallet/withdrawal_addresses", $query);
+		$data = $this->authRequest("/v1/wallet/withdrawal_addresses", "GET", false, $query);
 		if ($data["error"])
 			return $data; // Handle error if method has ["error"] key in return
 		return $data["result"]["withdrawal_addresses"];
