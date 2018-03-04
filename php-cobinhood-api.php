@@ -164,6 +164,12 @@ class API_client {
 			return $data; // Handle error if method has ["error"] key in return
 		return $data["result"]["ticker"];
 	}
+	public function get_tickers() {
+		$data = $this->pubRequest("/v1/market/tickers");
+		if ($data["error"])
+			return $data; // Handle error if method has ["error"] key in return
+		return $data["result"]["tickers"];
+	}
 	public function get_last_price($symbol) {
 		$data = $this->pubRequest("/v1/market/tickers/{$symbol}");
 		if ($data["error"])

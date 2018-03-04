@@ -15,12 +15,13 @@ PHP Cobinhood API is a simple to use API-client in PHP for [Cobinhood](https://c
   + [Installation](#installation-1)
   + [Main setup](#main-setup-1)
 * [Public API](#public-api)
-  + [Get latest price of a symbol](#get-latest-price-of-a-symbol)
+  + [Get the latest price of a symbol](#get-the-latest-price-of-a-symbol)
   + [Get depth of a symbol](#get-depth-of-a-symbol)
   + [Get all currencies](#get-all-currencies)
   + [Get info for all trading pairs](#get-info-for-all-trading-pairs)
   + [Get trading statistics](#get-trading-statistics)
   + [Get ticker of a symbol](#get-ticker-of-a-symbol)
+  + [Get tickers of all symbols](#get-tickers-of-all-symbols)
   + [Get recent trades of a symbol](#get-recent-trades-of-a-symbol)
   + [Get candles of a symbol](#get-candles-of-a-symbol)
   + [Get server time](#get-server-time)
@@ -30,25 +31,25 @@ PHP Cobinhood API is a simple to use API-client in PHP for [Cobinhood](https://c
   + [Place a LIMIT SELL order](#place-a-limit-sell-order)
   + [Place a MARKET BUY order](#place-a-market-buy-order)
   + [Place a MARKET SELL order](#place-a-market-sell-order)
-  + [Get order status](#get-order-status)
-  + [Cancel order](#cancel-order)
-  + [Modify order](#modify-order)
+  + [Get an order's status](#get-an-orders-status)
+  + [Cancel an order](#cancel-an-order)
+  + [Modify an order](#modify-an-order)
   + [Get open orders of a symbol](#get-open-orders-of-a-symbol)
   + [Get all open orders](#get-all-open-orders)
-  + [Get order trades](#get-order-trades)
+  + [Get order's trades](#get-orders-trades)
   + [Get order history of a symbol](#get-order-history-of-a-symbol)
   + [Get all order history](#get-all-order-history)
 * [Wallet API](#wallet-api)
   + [Get wallet balances](#get-wallet-balances)
   + [Get balance history of a currency](#get-balance-history-of-a-currency)
   + [Get all balance history](#get-all-balance-history)
-  + [Get deposit address of a currency](#get-deposit-address-of-a-currency)
+  + [Get deposit addresses of a currency](#get-deposit-addresses-of-a-currency)
   + [Get all deposit addresses](#get-all-deposit-addresses)
-  + [Get deposit status](#get-deposit-status)
+  + [Get deposit's status](#get-deposits-status)
   + [Get all deposits](#get-all-deposits)
   + [Get withdrawal addresses of a currency](#get-withdrawal-addresses-of-a-currency)
   + [Get all withdrawal addresses](#get-all-withdrawal-addresses)
-  + [Get withdrawal status](#get-withdrawal-status)
+  + [Get withdrawal's status](#get-withdrawals-status)
   + [Get all withdrawals](#get-all-withdrawals)
 
 
@@ -78,7 +79,7 @@ $cobinhood = new Cobinhood\API_client("<api key>");
 
 ## Public API
 
-#### Get latest price of a symbol
+#### Get the latest symbol price
 ```php
 $last_price = $cobinhood->get_last_price("COB-BTC");
 if (!$last_price["error"]) {
@@ -100,7 +101,7 @@ if (!$depth["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [sequence] => 0 // A sequence number that is updated on each orderbook state change
@@ -198,7 +199,7 @@ if (!$currencies["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -253,7 +254,7 @@ if (!$trading_pairs["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -305,7 +306,7 @@ if (!$stats["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [ABT-BTC] => Array
@@ -366,7 +367,7 @@ if (!$ticker["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [trading_pair_id] => COB-BTC
@@ -378,6 +379,65 @@ Array
     [last_trade_price] => 0.00001571
     [highest_bid] => 0.00001571
     [lowest_ask] => 0.00001627
+)
+```
+</details>
+
+#### Get tickers of all symbols
+```php
+$tickers = $cobinhood->get_tickers();
+if (!$tickers["error"]) {
+    print_r($tickers);
+}
+```
+
+<details>
+<summary>Response</summary>
+
+```
+Array
+(
+    [0] => Array
+        (
+            [trading_pair_id] => MANA-ETH
+            [timestamp] => 1520114520000
+            [24h_high] => 0.0001278
+            [24h_low] => 0.0001106
+            [24h_open] => 0.0001106
+            [24h_volume] => 3224.93485295
+            [last_trade_price] => 0.000125
+            [highest_bid] => 0.0001133
+            [lowest_ask] => 0.0001365
+        )
+
+    [1] => Array
+        (
+            [trading_pair_id] => SPHTX-USDT
+            [timestamp] => 1520114520000
+            [24h_high] => 0
+            [24h_low] => 0
+            [24h_open] => 0
+            [24h_volume] => 0
+            [last_trade_price] => 0
+            [highest_bid] => 0.0578
+            [lowest_ask] => 3.9956
+        )
+
+    [2] => Array
+        (
+            [trading_pair_id] => BDG-USDT
+            [timestamp] => 1520114520000
+            [24h_high] => 0.149
+            [24h_low] => 0.149
+            [24h_open] => 0.149
+            [24h_volume] => 0
+            [last_trade_price] => 0.149
+            [highest_bid] => 0.01173
+            [lowest_ask] => 0.14599
+        )
+
+    [...]
+
 )
 ```
 </details>
@@ -395,7 +455,7 @@ if (!$trades["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -444,7 +504,7 @@ if (!$candles["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -520,7 +580,7 @@ if (!$server_info["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [phase] => production
@@ -545,7 +605,8 @@ if (!$limit_buy_order["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
+Array
 (
     [id] => 37f550a2-2aa6-20f4-a3fe-e120f420637c
     [trading_pair] => COB-BTC
@@ -576,7 +637,7 @@ if (!$limit_sell_order["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [id] => 37f550a2-2aa6-20f4-a3fe-e120f420637c
@@ -607,7 +668,8 @@ if (!$market_buy_order["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
+Array
 (
     [id] => 37f550a2-2aa6-20f4-a3fe-e120f420637c
     [trading_pair] => COB-BTC
@@ -637,7 +699,8 @@ if (!$market_sell_order["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
+Array
 (
     [id] => 37f550a2-2aa6-20f4-a3fe-e120f420637c
     [trading_pair] => COB-BTC
@@ -654,7 +717,7 @@ if (!$market_sell_order["error"]) {
 ```
 </details>
 
-#### Get order status
+#### Get an order's status
 ```php
 $order_id = "37f550a2-2aa6-20f4-a3fe-e120f420637c";
 
@@ -667,7 +730,7 @@ if (!$order_status["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [id] => 37f550a2-2aa6-20f4-a3fe-e120f420637c
@@ -685,7 +748,7 @@ Array
 ```
 </details>
 
-#### Cancel order
+#### Cancel an order
 ```php
 $order_id = "37f550a2-2aa6-20f4-a3fe-e120f420637c";
 
@@ -696,7 +759,7 @@ if (!$cancel_order["error"] && $cancel_order) {
 }
 ```
 
-#### Modify order
+#### Modify an order
 ```php
 $orderId = '37f550a2-2aa6-20f4-a3fe-e120f420637c';
 $price = 0.000018;
@@ -722,7 +785,7 @@ if (!$open_orders["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -757,7 +820,7 @@ if (!$open_orders_all["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -794,7 +857,7 @@ Array
 ```
 </details>
 
-#### Get order trades
+#### Get order's trades
 ```php
 $order_id = "37f550a2-2aa6-20f4-a3fe-e120f420637c";
 
@@ -807,7 +870,7 @@ if (!$order_trades["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -845,7 +908,7 @@ if (!$orders_history["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -895,7 +958,7 @@ if (!$orders_history_all["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -945,7 +1008,7 @@ if (!$balances["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -992,7 +1055,7 @@ if (!$balance_history["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1057,7 +1120,7 @@ if (!$balance_history_all["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1120,7 +1183,7 @@ if (!$deposit_addresses["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1146,7 +1209,7 @@ if (!$deposit_addresses_all["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1169,7 +1232,7 @@ Array
 ```
 </details>
 
-#### Get deposit status
+#### Get deposit's status
 ```php
 $deposit_id = "09619448-985d-4485-835e-b69096194482";
 
@@ -1182,7 +1245,7 @@ if (!$deposit_status["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [amount] => 0.05
@@ -1212,7 +1275,7 @@ if (!$deposits["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1263,7 +1326,7 @@ if (!$withdrawal_addresses["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1292,7 +1355,7 @@ if (!$withdrawal_addresses_all["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
@@ -1320,7 +1383,7 @@ Array
 ```
 </details>
 
-#### Get withdrawal status
+#### Get withdrawal's status
 ```php
 $withdrawal_id = "09619448-985d-4485-835e-b69096194482";
 
@@ -1333,7 +1396,7 @@ if (!$withdrawal_status["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [amount] => 0.021
@@ -1363,7 +1426,7 @@ if (!$withdrawals["error"]) {
 <details>
 <summary>Response</summary>
 
-```php
+```
 Array
 (
     [0] => Array
