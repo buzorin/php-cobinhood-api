@@ -79,7 +79,7 @@ $cobinhood = new Cobinhood\API_client("<api key>");
 
 ## Public API
 
-#### Get the latest symbol price
+#### Get the latest price of a symbol
 ```php
 $last_price = $cobinhood->get_last_price("COB-BTC");
 if (!$last_price["error"]) {
